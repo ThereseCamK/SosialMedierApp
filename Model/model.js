@@ -1,5 +1,8 @@
+
+ 
 const model = {
     loggedInUser: 1,
+    content: '',
 
     profiles:[
         {
