@@ -10,7 +10,7 @@ const model = {
             name: 'Therese',
             birthDay: '02.04.1990',
             place: 'Sandefjord',
-            friends:[3,2, 10],
+            friends:[3, 10],
         },
         {
             id: 2,
@@ -29,7 +29,7 @@ const model = {
         {
             id: 10,
             name: 'Joakim',
-            birthDay: '02.04.1990',
+            birthDay: '11.04.1990',
             place: 'Stavanger',
             friends:[],
         },

@@ -7,7 +7,8 @@ function showFriends(){
     loggedIn.friends.forEach(element => {
         // element er id til vennene
            let friendsOfLoggedInUser = model.profiles.find(friendId => friendId.id == element)
-               html += `<div class="friendCard"> Navn: ${friendsOfLoggedInUser.name}<br><button onclick="removeFriend(${friendsOfLoggedInUser.id})">x</button></div>
+               html += `<div class="friendCard"> Navn: ${friendsOfLoggedInUser.name}<br>
+               ${friendsOfLoggedInUser.place}<button onclick="removeFriend(${friendsOfLoggedInUser.id})">x</button></div>
                `
        });
        model.content = html;
