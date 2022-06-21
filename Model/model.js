@@ -16,7 +16,7 @@ const model = {
             password: '1234',
             birthDay: '02.04.1990',
             place: 'Sandefjord',
-            friends:[3, 10],
+            friends:[2, 3, 10,4],
             requests: [],
         },
         {
@@ -25,7 +25,7 @@ const model = {
             password: '1234',
             birthDay: '28.02.1987',
             place: 'Larvik',
-            friends:[1,3],
+            friends:[1,3,4],
             requests: [10],
         },
         {
@@ -34,7 +34,7 @@ const model = {
             password: '1234',
             birthDay: '15.08.1990',
             place: 'Tønsberg',
-            friends:[2,1],
+            friends:[2,1,4],
             requests: [11],
         },
         {
@@ -43,7 +43,7 @@ const model = {
             password: '1234',
             birthDay: '10.04.1993',
             place: 'Stavenger',
-            friends:[],
+            friends:[2,3,1],
             requests: [],
         },
         {
@@ -52,7 +52,7 @@ const model = {
             password: '1234',
             birthDay: '25.09.1990',
             place: 'Sandefjord',
-            friends:[],
+            friends:[1],
             requests: [11],
         },
         {
@@ -62,7 +62,7 @@ const model = {
             birthDay: '19.09.1970',
             place: 'Larvik',
             friends:[],
-            requests: [2],
+            requests: [],
         },
     ],
 

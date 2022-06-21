@@ -82,3 +82,36 @@ function removeRequest(userId){
     showAll()
 
 }
+function logIn(){
+    for(let i = 0; i < model.profiles.length; i++){
+        if(model.logInInputs.name == model.profiles[i].name &&
+            model.logInInputs.password == model.profiles[i].password
+            ){
+                model.loggedInUser = model.profiles[i].id
+            }
+            
+    }
+    show();
+}
+
+function showRequests(){
+    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
+    model.content = '';
+    let html = '';
+    if (loggedIn.requests != '') {
+        for (let i = 0; i < loggedIn.requests.length; i++) {
+            for (let j = 0; j < model.profiles.length; j++) {
+                if (loggedIn.requests[i] == model.profiles[j].id) {
+                    html += `<hr>${model.profiles[j].name} har sendt venneforespørsel<br>
+                    <button onclick="accpectRequest(${model.profiles[j].id}, ${i})"> godta</button> 
+                    <button onclick="decline(${i})"> avslå</button>`;
+                }
+            }
+        }
+
+
+    }
+    model.content = html;
+    show()
+
+}
