@@ -18,7 +18,7 @@ function show(){
 
     html += `<div>${model.content}</div>`
 
-    document.getElementById('app').innerHTML = html;
+    appdiv.innerHTML = html;
 }
 function logOut(){
     model.loggedInUser = null;
