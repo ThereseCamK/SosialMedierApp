@@ -1,5 +1,26 @@
 
+function show(){
+    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
+    let html = '';
+        if(model.loggedInUser == null ){
+            html += logInView()
+        }
+        else {
+            html += `<h1>Logget inn som: ${loggedIn.name}</h1>
+            <button onclick="showFriends()"> vis venner</button>
+            <button onclick="showAll()"> vis alle</button>
+            <button onclick="showRequests()"> vis forespørsler </button>
+            <button onclick="logOut()"> Log ut </button>
+            `;
+        }
+        
+  
+    // html = checkForfriendRequests(html);
 
+    html += `<div>${model.content}</div>`
+
+    appdiv.innerHTML = html;
+}
 function logOut(){
     model.loggedInUser = null;
     model.content = '';
