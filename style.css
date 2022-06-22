@@ -38,11 +38,56 @@ font-family:'Courier New', Courier, monospace;
     text-align: center;
     margin-top: 10%;
 }
+.loggedInName{
+    text-shadow: 2px 2px 7px rgb(0, 0, 0);
+    text-align: left;
+    color: rgb(136, 48, 7);
+ 
+}
+.menuDiv{
+    text-align: center;
+}
+.menuButton{
+    box-shadow:  2px 2px 7px rgb(0, 0, 0);
+    background-color: rgb(245, 158, 126);
+    width: 10%;
+    padding: 0.4%;
+    color: rgb(136, 48, 7);
+    margin: 1%;
+ 
+}
+.allDiv{
+    text-align: center;
+    border: 1px solid rgb(234, 82, 11);
+ width: 25%;
+ float: left;
+ margin: 2%;
+ box-shadow:  2px 2px 7px rgb(0, 0, 0);
+   
+
+}
+.friendButton{
+    box-shadow:  2px 2px 7px rgb(0, 0, 0);
+    background-color: rgb(245, 158, 126);
+    width: auto;
+    padding: 0.4%;
+    color: rgb(136, 48, 7);
+    margin: 1%;
+}
 @media screen and (max-width: 950px) {
     .logInDiv  {
         width: 100%;
         margin-top: 20%;
 }
+.menuButton{
+  
+    width: 30%;
+    overflow: hidden;
+    color: rgb(136, 48, 7);
+ 
+ 
+}
+
 }
     
 

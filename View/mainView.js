@@ -15,25 +15,32 @@ function show(){
 
 //function that show the page when you ar logged in
 function showLoggedinpage(html, loggedIn) {
-    html += `<h1>Logget inn som: ${loggedIn.name}</h1>
-            <button onclick="showFriends()"> vis venner</button>
-            <button onclick="showAll()"> vis alle</button>
-            <button onclick="showRequests()"> vis forespørsler </button>
-            <button onclick="logOut()"> Log ut </button>
+    html += `<h2 class="loggedInName">${loggedIn.name}</h2>
+    <div class="menuDiv">
+            <button class="menuButton" onclick="showFriends()"> Venner</button>
+            <button class="menuButton" onclick="showAll()"> Alle</button>
+            <button class="menuButton" onclick="showRequests()"> Forespørsler </button>
+            <button class="menuButton" onclick="logOut()"> Logg ut </button>
+            </div>
+            <hr>
+            
             `;
     return html;
 }
 
  // show All profiles there is
  function showAll(){
+    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
     let html = '';
     model.content = '';
-  
-    model.profiles.map(u => html += `
-            <div> Navn: ${u.name}<br>
-            bosted: ${u.place}<br>
-            bursdag: ${u.birthDay}</div>
-            ${checkIfAlreadyFriend(u)}<hr>
+   let allButNotU =  model.profiles.filter(p => loggedIn.id != p.id);
+
+
+   allButNotU.map(u => 
+        html +=  `
+            <div class="allDiv" onclick="selectPerson(${u})"> ${u.name}<br>
+                ${checkIfAlreadyFriend(u)}
+            </div>
          
         `
         );
@@ -49,17 +56,17 @@ function checkIfAlreadyFriend(user){
     let isfriend = '';
     console.log(loggedIn.id)
         if(user.requests.includes(loggedIn.id)){
-            isfriend = `<button onclick="removeRequest(${user.id})"> avbryt </button>`
+            isfriend = `<button class="friendButton" onclick="removeRequest(${user.id})"> avbryt </button>`
         }
             else if(loggedIn.id == user.id){
             isfriend = ' '
         }
         else if(mapFriends.includes(user.id)){
-            isfriend = `<button onclick="removeFriend(${user.id}, 'all')">Fjern Venn</button>`;
+            isfriend = `<button class="friendButton"  onclick="removeFriend(${user.id}, 'all')">Fjern Venn</button>`;
         }
         else{
             // isfriend = `<button onclick="addFriend(${user.id})">Legg til venn</button>`;
-            isfriend = `<button onclick="sendRequest(${user.id}, ${loggedIn.id})">Legg til venn</button>`;
+            isfriend = `<button class="friendButton"  onclick="sendRequest(${user.id}, ${loggedIn.id})">Legg til venn</button>`;
         }
   return isfriend;
 

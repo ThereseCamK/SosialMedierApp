@@ -87,7 +87,7 @@ function removeFriend(friendId, view){
 
 
  
-
+// function to remove a already pendig friendrequest you have sent
 function removeRequest(userId){
     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
     let findUser = model.profiles.find(u => u.id == userId);
