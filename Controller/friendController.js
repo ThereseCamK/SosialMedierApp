@@ -88,14 +88,14 @@ function removeFriend(friendId, view){
 
  
 
-// function removeRequest(userId){
-//     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
-//     let findUser = model.profiles.find(u => u.id == userId);
-//     let findIndex = findUser.requests.indexOf(loggedIn.id);
-//     findUser.requests.splice(findIndex, 1);
-//     showAll()
+function removeRequest(userId){
+    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
+    let findUser = model.profiles.find(u => u.id == userId);
+    let findIndex = findUser.requests.indexOf(loggedIn.id);
+    findUser.requests.splice(findIndex, 1);
+    showAll()
 
-// }
+}
 
 
 
