@@ -6,43 +6,42 @@ function show(){
             html += logInView()
         }
         else {
-            html += `<h1>Logget inn som: ${loggedIn.name}</h1>
+            html = showLoggedinpage(html, loggedIn);
+        }
+    html += `<div>${model.content}</div>`
+
+    appdiv.innerHTML = html;
+}
+
+//function that show the page when you ar logged in
+function showLoggedinpage(html, loggedIn) {
+    html += `<h1>Logget inn som: ${loggedIn.name}</h1>
             <button onclick="showFriends()"> vis venner</button>
             <button onclick="showAll()"> vis alle</button>
             <button onclick="showRequests()"> vis forespørsler </button>
             <button onclick="logOut()"> Log ut </button>
             `;
-        }
-        
-  
-    // html = checkForfriendRequests(html);
-
-    html += `<div>${model.content}</div>`
-
-    appdiv.innerHTML = html;
+    return html;
 }
-function logOut(){
-    model.loggedInUser = null;
+
+ // show All profiles there is
+ function showAll(){
+    let html = '';
     model.content = '';
-    show()
+  
+    model.profiles.map(u => html += `
+            <div> Navn: ${u.name}<br>
+            bosted: ${u.place}<br>
+            bursdag: ${u.birthDay}</div>
+            ${checkIfAlreadyFriend(u)}<hr>
+         
+        `
+        );
+    model.content = html;
+    show();
 }
 
-function logInView(){
-    let html = `
-    <input type="text" oninput="model.logInInputs.name = this.value">
-    <input type="text" oninput="model.logInInputs.password = this.value">
-    <button onclick="logIn()">Log in</button>
-    `
-    return html;
-
-}
-
-
-function checkForfriendRequests(html) {
-   
-    return html;
-}
-
+//function to check if the profile is already on yout friend list, gives you option to add, delete or abort request that is pending
 function checkIfAlreadyFriend(user){
    
     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);

@@ -5,3 +5,44 @@
     height: 100px;
     float:left;
 }
+body{
+background-color: rgb(245, 158, 126);
+font-family:'Courier New', Courier, monospace;
+}
+
+.logInDiv{
+    display: block;
+    border: 1px solid rgb(234, 82, 11);
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    height: 90%;
+    text-align: center;
+    margin-top: 10%;
+    box-shadow: 2px 2px 10px 1px grey;
+}
+.logInInput{
+    margin: 5px;
+    box-shadow: inset 2px 2px 10px  grey;
+    color: rgb(234, 82, 11);
+}
+.logInButton{
+    margin: 5px;
+    box-shadow: inset 2px 2px 10px  grey;
+    color: rgb(234, 82, 11);
+}
+.logInHeadLine{
+
+    color: rgb(136, 48, 7);
+    text-shadow: 2px 2px 7px rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 10%;
+}
+@media screen and (max-width: 950px) {
+    .logInDiv  {
+        width: 100%;
+        margin-top: 20%;
+}
+}
+    
+

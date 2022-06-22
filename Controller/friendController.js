@@ -15,26 +15,33 @@ function showFriends(){
        show();
 }
 
-function removeFriend(friendId, view){
+//shows freindrequests, gives you option to decline or accept
+function showRequests(){
     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
-    let loggedInIndex = loggedIn.friends.indexOf(loggedIn.id)
-    let friendIndex = loggedIn.friends.indexOf(friendId);    
-    let friend = model.profiles.find(f => f.id ==friendId)
-
-    friend.friends.splice(loggedInIndex, 1)
-    loggedIn.friends.splice(friendIndex, 1);
-
-    
-    if(view == 'friends'){
-        showFriends();
+    model.content = '';
+    let html = '';
+    if (loggedIn.requests != '') {
+        for (let i = 0; i < loggedIn.requests.length; i++) {
+            for (let j = 0; j < model.profiles.length; j++) {
+                html = acceptOrDeclineRequest(loggedIn, i, j, html);
+            }
+        }
     }
-    if(view == 'all'){
-        showAll()
-    }
-  
-    
+    model.content = html;
+    show()
+
 }
 
+
+function acceptOrDeclineRequest(loggedIn, i, j, html) {
+    if (loggedIn.requests[i] == model.profiles[j].id) {
+        html += `<hr>${model.profiles[j].name} har sendt venneforespørsel<br>
+                    <button onclick="accpectRequest(${model.profiles[j].id}, ${i})"> godta</button> 
+                    <button onclick="decline(${i})"> avslå</button>`;
+    }
+    return html;
+}
+//controller function to send a friend request and det user get a request to decline og accept
 function sendRequest(idOfuserAceptRequest, idOfUserSendRequest ){
     let addedFriend = model.profiles.find(i => i.id == idOfuserAceptRequest );
       addedFriend.requests.push(idOfUserSendRequest);
@@ -43,6 +50,7 @@ function sendRequest(idOfuserAceptRequest, idOfUserSendRequest ){
       showAll();
   }
   
+  //controller function to accept a friend request
   function accpectRequest(newFriend, index){
     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
     let friendRecivedrequest=  model.profiles.find(f => f.id == newFriend);
@@ -52,66 +60,44 @@ function sendRequest(idOfuserAceptRequest, idOfUserSendRequest ){
       console.log(newFriend, ' hva er newfriend')
       showRequests();
   }
+
+  //controller function to decline a friend request
   function decline(index){
     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
       loggedIn.requests.splice(index,1);
       showRequests();
   }
-  
-  function showAll(){
-    let html = '';
-    model.content = '';
-  
-    model.profiles.map(u => html += `
-            <div> Navn: ${u.name}<br>
-            bosted: ${u.place}<br>
-            bursdag: ${u.birthDay}</div>
-            ${checkIfAlreadyFriend(u)}<hr>
-         
-        `
-        );
-    model.content = html;
-    show();
-}
 
-function removeRequest(userId){
+  //controller function to remove a friend from your friend list and you from her/his friend list at the same time
+
+function removeFriend(friendId, view){
     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
-    let findUser = model.profiles.find(u => u.id == userId);
-    let findIndex = findUser.requests.indexOf(loggedIn.id);
-    findUser.requests.splice(findIndex, 1);
-    showAll()
-
-}
-function logIn(){
-    for(let i = 0; i < model.profiles.length; i++){
-        if(model.logInInputs.name == model.profiles[i].name &&
-            model.logInInputs.password == model.profiles[i].password
-            ){
-                model.loggedInUser = model.profiles[i].id
-            }
-            
+    let loggedInIndex = loggedIn.friends.indexOf(loggedIn.id)
+    let friendIndex = loggedIn.friends.indexOf(friendId);    
+    let friend = model.profiles.find(f => f.id ==friendId)
+    friend.friends.splice(loggedInIndex, 1)
+    loggedIn.friends.splice(friendIndex, 1);
+    if(view == 'friends'){
+        showFriends();
     }
-    show();
-}
-
-function showRequests(){
-    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
-    model.content = '';
-    let html = '';
-    if (loggedIn.requests != '') {
-        for (let i = 0; i < loggedIn.requests.length; i++) {
-            for (let j = 0; j < model.profiles.length; j++) {
-                if (loggedIn.requests[i] == model.profiles[j].id) {
-                    html += `<hr>${model.profiles[j].name} har sendt venneforespørsel<br>
-                    <button onclick="accpectRequest(${model.profiles[j].id}, ${i})"> godta</button> 
-                    <button onclick="decline(${i})"> avslå</button>`;
-                }
-            }
-        }
-
-
+    if(view == 'all'){
+        showAll()
     }
-    model.content = html;
-    show()
-
 }
+
+
+ 
+
+// function removeRequest(userId){
+//     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
+//     let findUser = model.profiles.find(u => u.id == userId);
+//     let findIndex = findUser.requests.indexOf(loggedIn.id);
+//     findUser.requests.splice(findIndex, 1);
+//     showAll()
+
+// }
+
+
+
+
+
