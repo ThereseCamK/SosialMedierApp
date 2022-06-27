@@ -28,6 +28,27 @@ function showLoggedinpage(html, loggedIn) {
     return html;
 }
 
+//funskjon for å vise venner
+function showFriends(){
+    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
+    model.content = '';
+    let html = '';
+    loggedIn.friends.forEach(element => {
+        // element er id til vennene
+           let friendsOfLoggedInUser = model.profiles.find(friendId => friendId.id == element)
+               html += `<div class="friendCard"> 
+                <p>${friendsOfLoggedInUser.name}</p>
+                <p>${friendsOfLoggedInUser.place}</p>
+                <p>test informasjon</p>
+                <button class="friendsButton" onclick="removeFriend(${friendsOfLoggedInUser.id}, 'friends')">
+                Fjern Venn</button>
+               </div>
+               `
+       });
+       model.content = html;
+    show();
+}
+
  // show All profiles there is
  function showAll(){
     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);

@@ -1,19 +1,5 @@
 
 
-function showFriends(){
-    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
-    model.content = '';
-    let html = '';
-    loggedIn.friends.forEach(element => {
-        // element er id til vennene
-           let friendsOfLoggedInUser = model.profiles.find(friendId => friendId.id == element)
-               html += `<div class="friendCard"> Navn: ${friendsOfLoggedInUser.name}<br>
-               ${friendsOfLoggedInUser.place}<button onclick="removeFriend(${friendsOfLoggedInUser.id}, 'friends')">x</button></div>
-               `
-       });
-       model.content = html;
-       show();
-}
 
 //shows freindrequests, gives you option to decline or accept
 function showRequests(){
