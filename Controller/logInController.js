@@ -20,8 +20,9 @@ function logOut(){
 }
 
 function registrerUser(){
-    
-    model.profiles.push({
+    if(model.registerInput.name && model.registerInput.place != '' && model.registerInput.password === model.registerInput.confirmPassword){
+
+        model.profiles.push({
         
             id: Math.floor(Math.random() * 1000),
             name: model.registerInput.name,
@@ -35,7 +36,25 @@ function registrerUser(){
             friends:[],
             requests: [],
         
-    })
-    model.currentPage = '';
+            })
+    
+            emptyFieldsInRegistrer();
+    }
+    else{
+        alert('Du mangler å fylle inn * ')
+    }
+
     show();
+}
+
+function emptyFieldsInRegistrer() {
+    model.currentPage = '';
+    model.registerInput.name = '';
+    model.registerInput.password = '';
+    model.registerInput.confirmPassword = '';
+    model.registerInput.birthDay = '';
+    model.registerInput.place = '';
+
+    model.registerInput.description = '';
+    model.registerInput.status = '';
 }

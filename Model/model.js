@@ -1,7 +1,7 @@
 
  
 const model = {
-    loggedInUser:1,
+    loggedInUser:null,
     content: '',
     logInInputs:{
         name: '',
@@ -14,11 +14,11 @@ const model = {
         password: '',
         confirmPassword:'',
         place: '',
+        birthDay:'',
         description: '',
         status:'',
-        relationshipWith: null,
-        friends:[],
-        requests:[],
+       
+       
     },
 
     profiles:[
