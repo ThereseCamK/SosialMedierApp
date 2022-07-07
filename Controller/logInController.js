@@ -18,3 +18,24 @@ function logOut(){
     model.logInInputs.password = '';
     show();
 }
+
+function registrerUser(){
+    
+    model.profiles.push({
+        
+            id: Math.floor(Math.random() * 1000),
+            name: model.registerInput.name,
+            password: model.registerInput.password,
+
+            birthDay: model.registerInput.birthDay,
+            place: model.registerInput.place,
+            description: model.registerInput.description,
+            status: model.registerInput.status,
+            relationshipWith: null,
+            friends:[],
+            requests: [],
+        
+    })
+    model.currentPage = '';
+    show();
+}

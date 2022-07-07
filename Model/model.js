@@ -1,12 +1,24 @@
 
  
 const model = {
-    loggedInUser: 10,
+    loggedInUser:1,
     content: '',
     logInInputs:{
         name: '',
         password: ''
 
+    },
+    currentPage: '',
+    registerInput:{
+        name: '',
+        password: '',
+        confirmPassword:'',
+        place: '',
+        description: '',
+        status:'',
+        relationshipWith: null,
+        friends:[],
+        requests:[],
     },
 
     profiles:[

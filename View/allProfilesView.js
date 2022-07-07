@@ -21,6 +21,7 @@ function showAll(){
 
 //function to check if the profile is already on yout friend list, gives you option to add, delete or abort request that is pending
 function checkIfAlreadyFriend(user){
+    console.log(user, ' hva er user ')
    
     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
     let mapFriends = loggedIn.friends.map(u => u);

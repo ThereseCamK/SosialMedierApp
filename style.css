@@ -56,6 +56,13 @@ body {
     color: rgb(136, 48, 7);
     margin: 5%; 
 }
+.regBTN{
+    background-color: rgb(245, 158, 126);
+    box-shadow: 2px 2px 7px rgb(0, 0, 0); 
+    color: rgb(136, 48, 7);
+    margin-left:5%;
+    margin-bottom: 3%;
+}
 
 .logInHeadLine {
     color: rgb(136, 48, 7);
@@ -130,23 +137,17 @@ body {
         margin: 5%;
     }
     .friendCard {
-       
-    
         margin: 2%;
         width: 90%;
         height: 40%;
         float: none;
-
     }
     .allDiv {
-
         border: 1px solid rgb(234, 82, 11);
         width: 90%;
         float: none;
         margin-bottom: 10%;
         box-shadow: 2px 2px 7px rgb(0, 0, 0);
-    
-    
     }
 
 }

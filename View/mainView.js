@@ -4,7 +4,11 @@ function show(){
     let html = '';
         if(model.loggedInUser == null ){
             html += logInView()
+        if(model.currentPage == 'register'){
+            html = registrer()
         }
+        }
+       
         else {
             html = showLoggedinpage(html, loggedIn);
         }
