@@ -1,32 +1,10 @@
 
 
 
-//shows freindrequests, gives you option to decline or accept
-function showRequests(){
-    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
-    model.content = '';
-    let html = '';
-    if (loggedIn.requests != '') {
-        for (let i = 0; i < loggedIn.requests.length; i++) {
-            for (let j = 0; j < model.profiles.length; j++) {
-                html = acceptOrDeclineRequest(loggedIn, i, j, html);
-            }
-        }
-    }
-    model.content = html;
-    show()
-
-}
 
 
-function acceptOrDeclineRequest(loggedIn, i, j, html) {
-    if (loggedIn.requests[i] == model.profiles[j].id) {
-        html += `<hr>${model.profiles[j].name} har sendt venneforespørsel<br>
-                    <button onclick="accpectRequest(${model.profiles[j].id}, ${i})"> godta</button> 
-                    <button onclick="decline(${i})"> avslå</button>`;
-    }
-    return html;
-}
+
+
 //controller function to send a friend request and det user get a request to decline og accept
 function sendRequest(idOfuserAceptRequest, idOfUserSendRequest ){
     let addedFriend = model.profiles.find(i => i.id == idOfuserAceptRequest );

@@ -1,7 +1,7 @@
 
  
 const model = {
-    loggedInUser: null,
+    loggedInUser: 1,
     content: '',
     logInInputs:{
         name: '',
@@ -17,7 +17,7 @@ const model = {
             birthDay: '02.04.1990',
             place: 'Sandefjord',
             friends:[2, 3, 10,4],
-            requests: [],
+            requests: [11],
         },
         {
             id: 2,
@@ -61,7 +61,7 @@ const model = {
             password: '1234',
             birthDay: '19.09.1970',
             place: 'Larvik',
-            friends:[],
+            friends:[2,3,10],
             requests: [],
         },
     ],

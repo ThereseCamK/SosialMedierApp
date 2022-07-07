@@ -93,6 +93,89 @@ function checkIfAlreadyFriend(user){
 
 }
 
+//shows freindrequests, gives you option to decline or accept
+function showRequests(){
+    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
+    model.content = '';
+    let html = '';
+    if (loggedIn.requests != '') {
+        for (let i = 0; i < loggedIn.requests.length; i++) {
+            for (let j = 0; j < model.profiles.length; j++) {
+                html = acceptOrDeclineRequest(loggedIn, i, j, html);
+            }
+        }
+    }
+    model.content = html;
+    show()
+
+}
+
+function acceptOrDeclineRequest(loggedIn, i, j, html) {
+
+    if (loggedIn.requests[i] == model.profiles[j].id) {
+        html += `<div class="friendrequestName"> <div onclick="showOneProfile(${j},${i})">${model.profiles[j].name} har sendt venneforespørsel</div><br>
+                    <button class="friendButton"  onclick="accpectRequest(${model.profiles[j].id}, ${i})"> godta</button> 
+                    <button class="friendButton"  onclick="decline(${i})"> avslå</button></div>`;
+    }
+    return html;
+}
+
+function showOneProfile(j, i){
+    let html = '';
+   html += `<div> 
+   <p>Navn:${model.profiles[j].name}<p> 
+   <p>Bursdag:${model.profiles[j].birthDay}<p> 
+   <p>Bosted:${model.profiles[j].place}<p> 
+   <p>Venner til felles ${checkFriendsInCommon(j)} <p> 
+   <button class="friendButton"  onclick="accpectRequest(${model.profiles[j].id}, ${i})"> godta</button> 
+   <button class="friendButton"  onclick="decline(${i})"> avslå</button></div>
+   </div>`
+   model.content = html;
+   show();
+
+}
+
+function checkFriendsInCommon( j){
+    console.log(j,' check')
+    let html = ''
+    let loggedIn2 = model.profiles.find(users => users.id == model.loggedInUser);
+    let loggedInFriends = loggedIn2.friends.map(f=> f);
+    for(let i = 0; i< loggedInFriends.length; i++){
+        if(model.profiles[j].friends.includes(loggedInFriends[i])){
+            
+           html += showNameOfCommonFriend(loggedInFriends[i], j)
+        }
+    }
+   
+    return html
+
+    
+
+
+}
+
+function showNameOfCommonFriend(commonFriendID, j){
+    
+    console.log(commonFriendID)
+  
+    let html = ''
+    let friendIndex = model.profiles.find(p => p.id == commonFriendID)
+    html += `<div onclick="showProfile(${friendIndex.id}, ${j})"> ${friendIndex.name}</div> `
+   return html
+}
+
+function showProfile(userID, j){
+    let html = ''
+    let profile = model.profiles.find(f => f.id == userID)
+    html += `<h3 onclick="showOneProfile(${j})">Tilbake</h3><div>${profile.name}</div>`
+    model.content = html;
+    show()
+}
+
+
+
+
+
 
 
 
