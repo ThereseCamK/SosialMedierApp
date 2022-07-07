@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 //controller function to send a friend request and det user get a request to decline og accept
 function sendRequest(idOfuserAceptRequest, idOfUserSendRequest ){
     let addedFriend = model.profiles.find(i => i.id == idOfuserAceptRequest );
@@ -15,21 +9,34 @@ function sendRequest(idOfuserAceptRequest, idOfUserSendRequest ){
   }
   
   //controller function to accept a friend request
-  function accpectRequest(newFriend, index){
-    let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
-    let friendRecivedrequest=  model.profiles.find(f => f.id == newFriend);
-      loggedIn.requests.splice(index,1)
+  function accpectRequest(newFriend, index, view){
+    console.log(newFriend, ' newFreiend')
+  console.log(index, 'index ')
+   let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
+     let friendRecivedrequest=  model.profiles.find(f => f.id == newFriend);
+     loggedIn.requests.splice(index,1)
       loggedIn.friends.push(newFriend);
       friendRecivedrequest.friends.push(loggedIn.id)
-      console.log(newFriend, ' hva er newfriend')
-      showRequests();
+     console.log(newFriend, ' hva er newfriend')
+     if(view == 'all'){
+        showAll()
+     }
+     else{
+        showRequests();
+     }
+ 
   }
 
   //controller function to decline a friend request
-  function decline(index){
+  function decline(index, view){
     let loggedIn = model.profiles.find(users => users.id == model.loggedInUser);
       loggedIn.requests.splice(index,1);
-      showRequests();
+      if(view == 'all'){
+        showAll()
+     }
+     else{
+        showRequests();
+     }
   }
 
   //controller function to remove a friend from your friend list and you from her/his friend list at the same time
