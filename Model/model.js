@@ -1,7 +1,7 @@
 
  
 const model = {
-    loggedInUser: 11,
+    loggedInUser: null,
     content: '',
     logInInputs:{
         name: '',
