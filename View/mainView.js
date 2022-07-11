@@ -19,14 +19,20 @@ function show(){
 
 //function that show the page when you ar logged in
 function showLoggedinpage(html, loggedIn) {
-    html += `<h2 class="loggedInName">${loggedIn.name}</h2>
+    html += `<h2 class="loggedInName" onclick="showOneProfile(${model.profiles.indexOf(loggedIn)})">
+    ${loggedIn.name}</h2>
+
+    <div class="loggedInImg"><img src="img/${loggedIn.profileImg}.jpg" style="height:100px; width:100px;"></div>
     <div class="menuDiv">
+   
             <button class="menuButton" onclick="showFriends()"> Venner</button>
             <button class="menuButton" onclick="showAll()"> Alle</button>
             <button class="menuButton" onclick="showRequests()"> Forespørsler </button>
             <button class="menuButton" onclick="logOut()"> Logg ut </button>
             </div>
+          
             <hr>
+           
             
             `;
     return html;

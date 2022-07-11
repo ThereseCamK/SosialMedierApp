@@ -1,7 +1,7 @@
 
  
 const model = {
-    loggedInUser:null,
+    loggedInUser: 11,
     content: '',
     logInInputs:{
         name: '',
@@ -30,6 +30,7 @@ const model = {
             place: 'Sandefjord',
             description: 'Liker alt i fra strikking til leirdueskyting',
             status: 'i forhold',
+            profileImg: 'therese',
             relationshipWith: 10,
             friends:[2, 3, 10, 4, 11],
             requests: [],
@@ -42,6 +43,7 @@ const model = {
             place: 'Larvik',
             description: 'Liker å brenne ting, og fugler da',
             status: 'singel',
+            profileImg: 'Linn',
             relationshipWith: null,
             friends:[1,3,4,11],
             requests: [10],
@@ -54,6 +56,7 @@ const model = {
             place: 'Tønsberg',
             description: 'Liker katter',
             status: 'i forhold',
+            profileImg: 'Bjornar',
             relationshipWith: null,
             friends:[2,1,4],
             requests: [11],
@@ -66,6 +69,7 @@ const model = {
             place: 'Stavenger',
             description: 'Liker å spille freesbee golf',
             status: 'i forhold',
+            profileImg: 'joakim',
             relationshipWith: null,
             friends:[2,3,1],
             requests: [],
@@ -78,6 +82,7 @@ const model = {
             place: 'Sandefjord',
             description: 'Liker å spille med kompiser',
             status: 'i forhold',
+            profileImg: 'tomEirik',
             relationshipWith: 1,
             friends:[1],
             requests: [11],
@@ -90,6 +95,7 @@ const model = {
             place: 'Larvik',
             description: 'Liker å vakse og hjelpe de gamle',
             status: 'i forhold',
+            profileImg: 'aina',
             relationshipWith: null,
             friends:[2,1],
             requests: [],

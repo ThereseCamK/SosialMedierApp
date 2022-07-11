@@ -70,10 +70,12 @@ body {
     text-align: center;
     margin-top: 10%;
 }
-
+.loggedInImg{
+    text-align: center;
+}
 .loggedInName {
     text-shadow: 2px 2px 7px rgb(0, 0, 0);
-    text-align: left;
+    text-align: center;
     color: rgb(136, 48, 7);
 
 }
